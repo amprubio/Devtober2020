@@ -4,16 +4,12 @@ colorID: 0
 position: 721,130
 ---
 <<if visited("Ship") is false>>
-    Ship: Hey, friend.  #line:5837f2
-    Player: Hi, Ship. #line:ship9
-    Player: How's space? #line:ship10
-    Ship: Oh, man. #line:ship11
+   Pole
+   SubPole
+    ...
+   <<else>>
     <<setsprite ShipFace happy>>
-    Ship: It's HUGE! #line:ship12
-    <<setsprite ShipFace neutral>>
-<<else>>
-    <<setsprite ShipFace happy>>
-    Ship: Hey!! #line:ship13
+   ...
     <<setsprite ShipFace neutral>>
 <<endif>>
 
