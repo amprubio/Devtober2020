@@ -4,43 +4,53 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerController : MonoBehaviour
+
+namespace Yarn.Unity.Example
 {
-    Camera cam;
 
-    Ray ray;
-    RaycastHit hit;
-
-    NavMeshAgent agent;
-
-    void Start()
+    public class PlayerController : MonoBehaviour
     {
-        agent = GetComponent<NavMeshAgent>();
-        cam = Camera.main;
-    }
+        Camera cam;
 
-    void Update()
-    {
-        ray = cam.ScreenPointToRay(Input.mousePosition);
+        Ray ray;
+        RaycastHit hit;
 
-        //Click y Posicionamiento
-        if (Physics.Raycast(cam.transform.position, ray.direction, out hit, 100))
+        NavMeshAgent agent;
+
+        void Start()
         {
-            if (Input.GetButtonDown("Fire1"))
-                SetPosition();
-
-            Debug.DrawRay(cam.transform.position, ray.direction * hit.distance);
+            agent = GetComponent<NavMeshAgent>();
+            cam = Camera.main;
         }
-    }
 
-    void SetPosition()
-    {
-        agent.destination = hit.point;
-    }
+        void Update()
+        {
 
-    private void OnDrawGizmos()
-    {
-        if (EditorApplication.isPlaying && hit.collider)
-            Gizmos.DrawWireSphere(hit.point, 1);
+            if (FindObjectOfType<DialogueRunner>().IsDialogueRunning == true)
+            {
+                return;
+            }
+            ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            //Click y Posicionamiento
+            if (Physics.Raycast(cam.transform.position, ray.direction, out hit, 100))
+            {
+                if (Input.GetButtonDown("Fire1"))
+                    SetPosition();
+
+                Debug.DrawRay(cam.transform.position, ray.direction * hit.distance);
+            }
+        }
+
+        void SetPosition()
+        {
+            agent.destination = hit.point;
+        }
+
+        private void OnDrawGizmos()
+        {
+            if (EditorApplication.isPlaying && hit.collider)
+                Gizmos.DrawWireSphere(hit.point, 1);
+        }
     }
 }

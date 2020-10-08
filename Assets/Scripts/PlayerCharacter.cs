@@ -6,15 +6,10 @@ using System.Collections.Generic;
 namespace Yarn.Unity.Example {
     public class PlayerCharacter : MonoBehaviour {
 
-        public float minPosition = -5.3f;
-        public float maxPosition = 5.3f;
-
-        public float moveSpeed = 1.0f;
-
         public float interactionRadius = 2.0f;
 
         public float movementFromButtons {get;set;}
-
+        private Rigidbody rb;
         /// Draw the range at which we'll start talking to people.
         void OnDrawGizmosSelected() {
             Gizmos.color = Color.blue;
@@ -26,6 +21,10 @@ namespace Yarn.Unity.Example {
             Gizmos.DrawWireSphere(Vector3.zero, interactionRadius);
         }
 
+       void Start()
+        {
+            rb = this.GetComponent<Rigidbody>();
+        }
         /// Update is called once per frame
         void Update () {
 
@@ -34,7 +33,7 @@ namespace Yarn.Unity.Example {
                 return;
             }
             // Detect if we want to start a conversation
-            if (Input.GetKeyDown(KeyCode.Mouse0)) {
+            if (Input.GetKeyDown(KeyCode.Mouse0) && rb.velocity.x<0.1 && rb.velocity.y <0.1 && rb.velocity.z<0.1) {
                 CheckForNearbyNPC ();
             }
         }

@@ -724,6 +724,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7885222447126072096, guid: f26d121c91081c5408d1cd97012ed571,
+        type: 3}
+      propertyPath: characterName
+      value: Sally
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885222447126072096, guid: f26d121c91081c5408d1cd97012ed571,
+        type: 3}
+      propertyPath: talkToNode
+      value: Sally
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885222447126072096, guid: f26d121c91081c5408d1cd97012ed571,
+        type: 3}
+      propertyPath: scriptToLoad
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b6ae1e8d32e840f0b3fd0b033e52253,
+        type: 3}
     - target: {fileID: 7885222447126072108, guid: f26d121c91081c5408d1cd97012ed571,
         type: 3}
       propertyPath: m_Name
@@ -1237,6 +1253,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba9d53aa5fd71be4282f21693f3f0e04, type: 3}
+--- !u!1 &1795260260 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7885222447126072108, guid: f26d121c91081c5408d1cd97012ed571,
+    type: 3}
+  m_PrefabInstance: {fileID: 1203450954}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1795260264
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795260260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.28, y: 2.85, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1795287409
 GameObject:
   m_ObjectHideFlags: 0
