@@ -29,8 +29,12 @@ namespace Yarn.Unity.Example {
         void Update () {
 
             // Remove all player control when we're in dialogue
-            if (FindObjectOfType<DialogueRunner>().IsDialogueRunning == true) {
-                return;
+            if (FindObjectOfType<DialogueRunner>())
+            {
+                if (FindObjectOfType<DialogueRunner>().IsDialogueRunning == true)
+                {
+                    return;
+                }
             }
             // Detect if we want to start a conversation
             if (Input.GetKeyDown(KeyCode.Mouse0) && rb.velocity.x<0.1 && rb.velocity.y <0.1 && rb.velocity.z<0.1) {

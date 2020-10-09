@@ -25,11 +25,14 @@ namespace Yarn.Unity.Example
 
         void Update()
         {
-
-            if (FindObjectOfType<DialogueRunner>().IsDialogueRunning == true)
+            if (FindObjectOfType<DialogueRunner>())
             {
-                return;
+                if (FindObjectOfType<DialogueRunner>().IsDialogueRunning == true)
+                {
+                    return;
+                }
             }
+
             ray = cam.ScreenPointToRay(Input.mousePosition);
 
             //Click y Posicionamiento
