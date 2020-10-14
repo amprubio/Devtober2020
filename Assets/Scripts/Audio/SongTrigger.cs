@@ -1,10 +1,9 @@
-// audioController.Play(AudioType.StartMenu)
-// audioController.Pause(AudioType.StartMenu)
-// audioController.Stop(AudioType.StartMenu)
-// audioController.Restart(AudioType.StartMenu)
-// audioController.IsPlaying(AudioType.StartMenu)
-// audioController.FadeIn(AudioType.StartMenu, float timeInSeconds)
-// audioController.FadeOut(AudioType.StartMenu, float timeInSeconds)
+
+//public MusicManager manager;
+
+//manager.ChangeSong(string SongName);
+//manager.StopSmoothly();
+//manager.StopSuddenly();
 
 using System.Collections;
 using System.Collections.Generic;
@@ -40,7 +39,7 @@ namespace UnityCore {
                 }
 
                 if (other.gameObject.name == playerObject.name) {
-					manager.AddSong(musicName);
+					manager.ChangeSong(musicName);
                 }
             }
 

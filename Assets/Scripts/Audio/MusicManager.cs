@@ -1,3 +1,6 @@
+
+// public AudioController audioController;
+
 // audioController.Play(AudioType.StartMenu)
 // audioController.Pause(AudioType.StartMenu)
 // audioController.Stop(AudioType.StartMenu)
@@ -103,7 +106,18 @@ namespace UnityCore {
                 changing = false;
             }
 
-			public void AddSong(string songName){
+			bool songExists(string musicName) {
+				bool exists = false;
+				foreach (AudioType entry in AudioType.GetValues(typeof(AudioType))){
+					if (entry.ToString() == musicName) {
+						exists = true;
+					}
+				}
+
+				return exists;
+			}
+
+			public void ChangeSong(string songName){
 				if (debug) {
 					Debug.Log("trying to add the song: "+songName);
 				}
@@ -116,15 +130,19 @@ namespace UnityCore {
 
 			}
 
-			bool songExists(string musicName) {
-				bool exists = false;
-				foreach (AudioType entry in AudioType.GetValues(typeof(AudioType))){
-					if (entry.ToString() == musicName) {
-						exists = true;
-					}
+			public void StopSmoothly(){
+				if (debug) {
+					Debug.Log("trying to stop music");
 				}
+				songsStack.Push(AudioType.None);
+			}
 
-				return exists;
+			public void StopSuddenly(){
+				if (debug) {
+					Debug.Log("trying to stop music");
+				}
+				UpdateAudioTypeToPlay();
+				audioController.Stop( GetCurrentSong() );
 			}
 
 		}//end of Class
