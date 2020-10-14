@@ -37,8 +37,8 @@ namespace Yarn.Unity.Example {
                 }
             }
             // Detect if we want to start a conversation
-            if (Input.GetKeyDown(KeyCode.Mouse0) && rb.velocity.x<0.1 && rb.velocity.y <0.1 && rb.velocity.z<0.1) {
-                CheckForNearbyNPC ();
+            if (Input.GetKeyDown(KeyCode.Mouse0) ) {
+              Invoke("CheckForNearbyNPC",0.5f);
             }
         }
 
@@ -48,15 +48,20 @@ namespace Yarn.Unity.Example {
          */
         public void CheckForNearbyNPC ()
         {
-            var allParticipants = new List<NPC> (FindObjectsOfType<NPC> ());
-            var target = allParticipants.Find (delegate (NPC p) {
-                return string.IsNullOrEmpty (p.talkToNode) == false && // has a conversation node?
-                (p.transform.position - this.transform.position)// is in range?
-                .magnitude <= interactionRadius;
-            });
-            if (target != null) {
-                // Kick off the dialogue at this node.
-                FindObjectOfType<DialogueRunner> ().StartDialogue (target.talkToNode);
+            if (rb.velocity.x < 0.1 && rb.velocity.y < 0.1 && rb.velocity.z < 0.1)
+            {
+                var allParticipants = new List<NPC>(FindObjectsOfType<NPC>());
+                var target = allParticipants.Find(delegate (NPC p)
+                {
+                    return string.IsNullOrEmpty(p.talkToNode) == false && // has a conversation node?
+                    (p.transform.position - this.transform.position)// is in range?
+                    .magnitude <= interactionRadius;
+                });
+                if (target != null)
+                {
+                    // Kick off the dialogue at this node.
+                    FindObjectOfType<DialogueRunner>().StartDialogue(target.talkToNode);
+                }
             }
         }
     }
