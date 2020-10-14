@@ -40,24 +40,9 @@ namespace UnityCore {
                 }
 
                 if (other.gameObject.name == playerObject.name) {
-					if ( songExists() ) {
-						manager.AddSong(musicName);
-					} else if (debug) {
-						Debug.Log("Can't add a song that doesn't exist");
-					}
+					manager.AddSong(musicName);
                 }
             }
-
-			bool songExists() {
-				bool exists = false;
-				foreach (AudioType entry in AudioType.GetValues(typeof(AudioType))){
-					if (entry.ToString() == musicName) {
-						exists = true;
-					}
-                }
-
-				return exists;
-			}
 
         }//end of Class
 	}

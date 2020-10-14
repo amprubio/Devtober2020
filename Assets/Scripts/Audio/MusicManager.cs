@@ -102,10 +102,27 @@ namespace UnityCore {
 
 			public void AddSong(string songName){
 				if (debug) {
-					Debug.Log("go add the song: "+songName);
+					Debug.Log("trying to add the song: "+songName);
 				}
-				songsStack.Push(songName);
-				songAdded = true;
+
+				if ( songExists(songName) ) {
+					songsStack.Push(songName);
+					songAdded = true;
+				} else if (debug) {
+					Debug.Log("Can't add a song that doesn't exist");
+				}
+
+			}
+
+			bool songExists(string musicName) {
+				bool exists = false;
+				foreach (AudioType entry in AudioType.GetValues(typeof(AudioType))){
+					if (entry.ToString() == musicName) {
+						exists = true;
+					}
+				}
+
+				return exists;
 			}
 
 		}//end of Class
