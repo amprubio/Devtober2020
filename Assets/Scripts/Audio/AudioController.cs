@@ -67,7 +67,16 @@ namespace UnityCore {
 			}
 
 			public void Stop(AudioType _type){
-				AddJob(new AudioJob(AudioAction.STOP, _type));
+				if (_type != AudioType.None) {
+					if ( IsPlaying(_type) ) {
+						AddJob(new AudioJob(AudioAction.STOP, _type));
+					} else {
+						Log ("Trying to stop a clip that is not playing");
+					}
+				} else {
+					Log ("Trying to stop nothing");
+				}
+
 			}
 
 			public void Restart(AudioType _type){
@@ -75,26 +84,39 @@ namespace UnityCore {
 			}
 
 			public void Pause(AudioType _type){
-				if ( IsPlaying(_type) ) {
-					AddJob(new AudioJob(AudioAction.PAUSE, _type));
+				if (_type != AudioType.None) {
+					if ( IsPlaying(_type) ) {
+						AddJob(new AudioJob(AudioAction.PAUSE, _type));
+					} else {
+						Log ("Trying to pause a clip that is not playing");
+					}
 				} else {
-					Log ("Trying to pause a clip that is not playing");
+					Log ("Trying to pause nothing");
 				}
 			}
 
 			public void FadeOut(AudioType _type, float time){
-				if ( IsPlaying(_type) ) {
-					AddJob(new AudioJob(AudioAction.FADEOUT, _type) , time);
+				if (_type != AudioType.None) {
+					if ( IsPlaying(_type) ) {
+						AddJob(new AudioJob(AudioAction.FADEOUT, _type) , time);
+					} else {
+						Log ("Trying to Fade-Out a clip that is not playing");
+					}
 				} else {
-					Log ("Trying to Fade-Out a clip that is not playing");
+					Log ("Trying to Fade-Out nothing");
 				}
+
 			}
 
 			public void FadeIn(AudioType _type, float time){
-				if ( !IsPlaying(_type) ) {
-					AddJob(new AudioJob(AudioAction.FADEIN, _type) , time);
+				if (_type != AudioType.None) {
+					if ( !IsPlaying(_type) ) {
+						AddJob(new AudioJob(AudioAction.FADEIN, _type) , time);
+					} else {
+						Log ("Trying to Fade-In a clip that is already playing");
+					}
 				} else {
-					Log ("Trying to Fade-In a clip that is already playing");
+					Log ("Trying to Fade-In nothing");
 				}
 			}
 
@@ -106,13 +128,13 @@ namespace UnityCore {
 
 				if (_track.source.isPlaying) {
 					currentClip = _track.source.clip.name;
-					//Log ("checking for: "+checkClip+" and is playing: "+currentClip);
+					Log ("checking for: "+checkClip+" and is playing: "+currentClip);
 
 					if ( checkClip.Equals(currentClip) ) {
 						return true;
 					}
 				} else {
-					//Log ("checking for: "+checkClip+" and is playing: None");
+					Log ("checking for: "+checkClip+" and is playing: None");
 				}
 
 				return false;

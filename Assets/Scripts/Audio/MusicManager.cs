@@ -22,7 +22,6 @@ namespace UnityCore {
             private string songToPlay;
             private string SourceClipName;
             private bool changing;
-			private bool songAdded;
 
             private IEnumerator coroutine;
 			private Stack<string> songsStack = new Stack<string>();
@@ -36,27 +35,28 @@ namespace UnityCore {
 				changing = false;
 
 				UpdateClipNameFromAudioSource();
-                UpdateAudioType();
+                UpdateAudioTypeToPlay();
 				PlayInitialSong(AudioType.Song1);
             }
 
 			void Update() {
 				UpdateClipNameFromAudioSource();
-				if (songAdded) {
+
+				if (songsStack.Count>0) {
 					if (!changing) {
 						StartCoroutine( ChangeClipSmoothly(1,2,2) );
 					}
-					songAdded = false;
 				}
 			}
 
-            void UpdateAudioType() {
+            AudioType UpdateAudioTypeToPlay() {
 				audioType = AudioType.None;
                 foreach (AudioType entry in AudioType.GetValues(typeof(AudioType))){
                     if (entry.ToString() == songToPlay) {
                         audioType = entry;
                     }
                 }
+				return audioType;
             } //Updates audioType variable
 
 			void UpdateClipNameFromAudioSource() {
@@ -86,16 +86,19 @@ namespace UnityCore {
 				changing = true;
 
                 yield return new WaitForSeconds(delay);
-				songToPlay = songsStack.Peek();
-				UpdateAudioType();
 
-                if (audioType != AudioType.None) {
-                    audioController.FadeOut( GetCurrentSong(), fadeInTime);
-					yield return new WaitForSeconds(fadeInTime);
+                if ( GetCurrentSong() != AudioType.None) {
+                    audioController.FadeOut( GetCurrentSong(), fadeOutTime);
+					yield return new WaitForSeconds(fadeOutTime);
+					audioController.Stop( GetCurrentSong());
                 }
 
-				audioController.FadeIn( audioType, fadeOutTime);
-				yield return new WaitForSeconds(fadeOutTime);
+				songToPlay = songsStack.Peek();
+				audioType = UpdateAudioTypeToPlay();
+				songsStack.Clear();
+
+				audioController.FadeIn( audioType, fadeInTime);
+				yield return new WaitForSeconds(fadeInTime);
 
                 changing = false;
             }
@@ -107,7 +110,6 @@ namespace UnityCore {
 
 				if ( songExists(songName) ) {
 					songsStack.Push(songName);
-					songAdded = true;
 				} else if (debug) {
 					Debug.Log("Can't add a song that doesn't exist");
 				}
