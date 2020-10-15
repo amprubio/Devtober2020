@@ -134,7 +134,7 @@ namespace UnityCore {
 				if (debug) {
 					Debug.Log("trying to stop music");
 				}
-				songsStack.Push(AudioType.None);
+				songsStack.Push(" "); //ERROR DE COMPILACION
 			}
 
 			public void StopSuddenly(){
