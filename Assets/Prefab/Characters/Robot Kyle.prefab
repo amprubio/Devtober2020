@@ -760,6 +760,7 @@ GameObject:
   - component: {fileID: 3483361453571404502}
   - component: {fileID: 3483361453571404501}
   - component: {fileID: 3483361453571404497}
+  - component: {fileID: 727316643}
   m_Layer: 0
   m_Name: Robot Kyle
   m_TagString: Player
@@ -860,10 +861,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcea1ccd45a8141e594a8103eefc1fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPosition: -100
-  maxPosition: 100
-  moveSpeed: 1
-  interactionRadius: 2
+  interactionRadius: 1
+--- !u!114 &727316643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861231036780391361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3e0ae4c5566c84387922dcdada83f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDatabase:
+  - name: Amparo
+    id: 0
+    icon: {fileID: 0}
+  - name: Franxu
+    id: 1
+    icon: {fileID: 0}
+  - name: Adrian
+    id: 2
+    icon: {fileID: 0}
+  - name: Miguel
+    id: 3
+    icon: {fileID: 0}
+  - name: Zero
+    id: 4
+    icon: {fileID: 0}
+  - name: Carlos
+    id: 5
+    icon: {fileID: 0}
 --- !u!1 &5142433029746015750
 GameObject:
   m_ObjectHideFlags: 0
