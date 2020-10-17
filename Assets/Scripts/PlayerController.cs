@@ -16,14 +16,11 @@ namespace Yarn.Unity.Example
 
         NavMeshAgent agent;
 
-        Canvas invState;
-
         void Start()
         {
             agent = GetComponent<NavMeshAgent>();
 
-            if (GameObject.Find("Inventory_UI"))
-                invState = GameObject.Find("Inventory_UI").GetComponent<Canvas>();
+           
 
             cam = Camera.main;
         }
@@ -43,16 +40,13 @@ namespace Yarn.Unity.Example
             //Click y Posicionamiento
             if (Physics.Raycast(cam.transform.position, ray.direction, out hit, 100))
             {
-                if (Input.GetButtonDown("Fire1") && invState.enabled == false)
+                if (Input.GetButtonDown("Fire1") && FindObjectOfType<InventoryHandler>().isRunning())
                     SetPosition();
 
                 Debug.DrawRay(cam.transform.position, ray.direction * hit.distance);
             }
 
-            if (Input.GetButtonDown("Inventory") && invState)
-            {
-                Inventory();
-            }
+           
         }
 
         void SetPosition()
@@ -60,17 +54,7 @@ namespace Yarn.Unity.Example
             agent.destination = hit.point;
         }
 
-        void Inventory()
-        {
-            if (invState.enabled == false)
-            {
-                invState.enabled = true;
-            }
-            else if (invState.enabled)
-            {
-                invState.enabled = false;
-            }
-        }
+     
 
         private void OnDrawGizmos()
         {
