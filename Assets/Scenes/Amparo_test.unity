@@ -297,6 +297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 127271509}
+  - component: {fileID: 127271510}
   m_Layer: 5
   m_Name: Reloj
   m_TagString: Untagged
@@ -324,6 +325,20 @@ RectTransform:
   m_AnchoredPosition: {x: 49.5, y: -45.5}
   m_SizeDelta: {x: 49, y: 49}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &127271510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127271508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aef16af89265aee47bd6f2038d23c5eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  min: {fileID: 1960196082}
+  hour: {fileID: 990162616}
 --- !u!1 &176330236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,12 +1757,12 @@ PrefabInstance:
     - target: {fileID: 2627897728537902099, guid: 32834368e8226f544bef8c4610e5d950,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 21016.527
+      value: 22052.111
       objectReference: {fileID: 0}
     - target: {fileID: 2627897728537902099, guid: 32834368e8226f544bef8c4610e5d950,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -16514.42
+      value: -17550.004
       objectReference: {fileID: 0}
     - target: {fileID: 2627897729095208223, guid: 32834368e8226f544bef8c4610e5d950,
         type: 3}
