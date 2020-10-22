@@ -54,8 +54,6 @@ namespace Yarn.Unity.Example
             agent.destination = hit.point;
         }
 
-     
-
         private void OnDrawGizmos()
         {
             if (EditorApplication.isPlaying && hit.collider)
