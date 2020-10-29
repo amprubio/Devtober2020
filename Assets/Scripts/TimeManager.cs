@@ -23,8 +23,7 @@ public class TimeManager : MonoBehaviour
     {
         hour.localRotation = Quaternion.Euler(0, 0,(DEGREES * 5) * currhour);
         min.localRotation = Quaternion.Euler(0, 0,(DEGREES * currmin));
-
-        
+         
     }
 
     public void setHour(int h, int min)
@@ -37,11 +36,17 @@ public class TimeManager : MonoBehaviour
     {
         currmin += min;
 
-        if (currmin < 60)
+        if (currmin < 60|| currmin > -60)
         {
-            currhour += currmin % 60;
-            currmin = currmin / 60 * (currmin % 60);
-
+            AddHour(1);
+            min = min - 60;
         }
+        
+    }
+    public void AddHour(int h)
+    {
+        currhour += h;
+
     }
 }
+
