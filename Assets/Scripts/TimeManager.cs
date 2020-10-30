@@ -15,7 +15,9 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setHour(7,55);
+        if (min == null || hour == null)
+            Debug.LogError("manecillas nulas");
+     
     }
 
     // Update is called once per frame
