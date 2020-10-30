@@ -29,7 +29,7 @@ namespace Yarn.Unity.Example
         {
             if (FindObjectOfType<DialogueRunner>())
             {
-                if (FindObjectOfType<DialogueRunner>().IsDialogueRunning == true)
+                if (FindObjectOfType<DialogueRunner>().IsDialogueRunning == true || FindObjectOfType<MapSystem>().isRunning()==true)
                 {
                     return;
                 }
