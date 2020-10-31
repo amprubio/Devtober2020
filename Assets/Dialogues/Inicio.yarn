@@ -1,0 +1,28 @@
+﻿title: Inicio
+tags:
+---
+<<if visited("Inicio") is false>>
+    Nona: More cases to archive today...
+    Nona: I thought that my sister cleaned that.
+    Nona: I should tell her.
+<<else>>
+    Nona: Enough cases for today...
+<<endif>>
+<<if not visited ("Inicio.Call")>>
+[[Call Ada|Inicio.Call]]
+<<endif>>
+===
+
+title: Inicio.Call
+tags: 
+---
+    Ada: Hey, this Ada Labs  
+    Nona: Hey sister this is Nona. 
+    Ada: Hey Nona, you look really really tired. 
+    Nona: I was dealing with THE MESS.
+    Ada: OH, that should explain everything, but why are you doing that? 
+    Nona: Pure bureaucracy of Scothland Mille. 
+    Ada: I thought that you work on your own. 
+    Nona: Well I WORK ON MY OWN but the police have to know EVERYTHING about new cases #line:11
+    Nona: You know for dealing with the judge...Law things. 
+===
