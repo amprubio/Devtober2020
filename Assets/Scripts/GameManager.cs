@@ -6,8 +6,10 @@ using Yarn.Unity.Example;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+
     public TimeManager time_manager_;
     public MapSystem map_system_;
+    
     private int days;
     void Awake()
     {
