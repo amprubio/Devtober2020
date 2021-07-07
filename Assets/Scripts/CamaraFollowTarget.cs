@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CamaraFollowTarget : MonoBehaviour
 {
-    public Transform targetObject;
-    private Vector3 initalOffset;
-    private Vector3 cameraPosition;
+    [Header("Target to follow")]
+    public Transform targetObject; //target to follow
+    private Vector3 initalOffset; //offset
+    private Vector3 cameraPosition; //next position
 
     void Start()
     {

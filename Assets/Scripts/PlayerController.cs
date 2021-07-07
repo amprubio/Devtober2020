@@ -19,9 +19,6 @@ namespace Yarn.Unity.Example
         void Start()
         {
             agent = GetComponent<NavMeshAgent>();
-
-           
-
             cam = Camera.main;
         }
 
@@ -43,7 +40,7 @@ namespace Yarn.Unity.Example
                 if (Input.GetButtonDown("Fire1") && FindObjectOfType<InventoryHandler>().isRunning())
                     SetPosition();
 
-                Debug.DrawRay(cam.transform.position, ray.direction * hit.distance);
+                Debug.DrawRay(cam.transform.position, ray.direction * hit.distance, Color.magenta);
             }
 
            
